@@ -16,9 +16,11 @@
     padding:100px 20px;
   }
   .hero h1 {
-  color: yellow !important;
-}
-  .hero h1 {font-size:48px; font-weight:bold; text-shadow:2px 2px 6px #000;}
+    font-size:48px;
+    font-weight:bold;
+    text-shadow:2px 2px 6px #000;
+    color:yellow !important;
+  }
   .hero p {font-size:20px; text-shadow:1px 1px 4px #000;}
   .section-title {margin-top:30px; border-bottom:2px solid #ccc; padding-bottom:10px;}
   .footer {background:#222; color:#ccc; padding:20px; text-align:center;}
@@ -52,11 +54,8 @@
   <p>Browse our inventory and shop with confidence</p>
 </header>
 
-<div class="w3-content" style="max-width:1200px">
-  <div class="w3-row-padding w3-margin-top product-container">
-    <!-- Products will be injected here by JavaScript -->
-  </div>
-</div>
+<!-- Main Content -->
+<div id="main-content" class="w3-content" style="max-width:1200px"></div>
 
 <!-- Footer -->
 <footer class="footer">
@@ -75,44 +74,66 @@
 </footer>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+// central product data
 const products = [
-  {name:"Oled Nintendo Switch with White Controllers", image:"product1.jpg", price:225},
-  {name:"Dual Sense Edge Playstation Controller", image:"product2.jpg", price:150},
-  {name:"Dewalt Combo Kit", image:"product3.jpg", price:150},
-  {name:"NutriBullet", image:"product4.jpg", price:110},
-  {name:"Rog Ally X", image:"product5.jpg", price:799.99},
-  {name:"Xbox Series S With Controler", image:"product6.jpg", price:275},  
-  {name:"ASUS TUFF Gaming Laptop", image:"product7.jpg", price:629},        
-  {name:"1991 Classic Majour League Baseball Trivia Boardgame series 2", image:"product8.jpg", price:50}        
-
+  {id:1, name:"Oled Nintendo Switch with White Controllers", image:"product1.jpg", price:225, description:"Includes Joy-Cons and charger."},
+  {id:2, name:"Dual Sense Edge Playstation Controller", image:"product2.jpg", price:150, description:"Customizable PS5 controller."},
+  {id:3, name:"Dewalt Combo Kit", image:"product3.jpg", price:150, description:"Drill + impact driver combo."},
+  {id:4, name:"NutriBullet", image:"product4.jpg", price:110, description:"Never opened, 900W."},
+  {id:5, name:"Rog Ally X", image:"product5.jpg", price:799.99, description:"Handheld gaming PC."},
+  {id:6, name:"Xbox Series S With Controller", image:"product6.jpg", price:275, description:"512GB with controller."},  
+  {id:7, name:"ASUS TUF Gaming Laptop", image:"product7.jpg", price:629, description:"15.6”, Ryzen 7, RTX GPU."},        
+  {id:8, name:"1991 Classic Major League Baseball Trivia Boardgame Series 2", image:"product8.jpg", price:50, description:"Vintage trivia board game."}
 ];
 
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("main-content");
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
 
-  const container = document.querySelector(".product-container");
-
-  products.forEach(p => {
-    const div = document.createElement("div");
-    div.className = "w3-col l3 m6 s12 product";
-    div.innerHTML = `
-      <img src="${p.image}" alt="${p.name}">
-      <h4>${p.name}</h4>
-      <p class="price">$${p.price}</p>
-      <form method="POST" action="mailto:CoutureOnline15@gmail.com" enctype="text/plain">
-        <input type="hidden" name="Product" value="${p.name}">
-        <p><label>Name:<br><input type="text" name="Name" required></label></p>
-        <p><label>Email:<br><input type="email" name="Email" required></label></p>
-        <button type="submit" class="w3-button w3-black w3-small">Order Now</button>
-      </form>
+  if (id) {
+    // product.html
+    const product = products.find(p => p.id === parseInt(id, 10));
+    if (!product) {
+      container.innerHTML = "<p>Product not found.</p>";
+      return;
+    }
+    container.innerHTML = `
+      <div class="w3-card w3-padding w3-margin">
+        <img src="${product.image}" alt="${product.name}" style="max-width:300px;display:block;margin:auto;">
+        <h2>${product.name}</h2>
+        <p class="price">$${product.price}</p>
+        <p>${product.description}</p>
+        <form method="POST" action="mailto:CoutureOnline15@gmail.com" enctype="text/plain">
+          <input type="hidden" name="Product" value="${product.name}">
+          <p><label>Name:<br><input type="text" name="Name" required></label></p>
+          <p><label>Email:<br><input type="email" name="Email" required></label></p>
+          <button type="submit" class="w3-button w3-black">Order Now</button>
+        </form>
+      </div>
     `;
-    container.appendChild(div);
-  });
+  } else {
+    // store.html
+    const row = document.createElement("div");
+    row.className = "w3-row-padding w3-margin-top";
+    products.forEach(p => {
+      const div = document.createElement("div");
+      div.className = "w3-col l3 m6 s12 product";
+      div.innerHTML = `
+        <div class="w3-card w3-padding w3-center">
+          <a href="product.html?id=${p.id}">
+            <img src="${p.image}" alt="${p.name}">
+            <h4>${p.name}</h4>
+            <p class="price">$${p.price}</p>
+          </a>
+        </div>
+      `;
+      row.appendChild(div);
+    });
+    container.appendChild(row);
+  }
 });
 </script>
 
-
 </body>
 </html>
-
-
-

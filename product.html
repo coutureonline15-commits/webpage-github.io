@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jay's Pawnshop – Product</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+  .hero {
+    background: url('pawnshop-front.png') center/cover no-repeat;
+    padding:60px 20px;
+  }
+  .hero h1 {
+    font-size:36px;
+    font-weight:bold;
+    text-shadow:2px 2px 6px #000;
+    color:yellow !important;
+  }
+  .footer {background:#222; color:#ccc; padding:20px; text-align:center;}
+  .footer a {color:#fff; text-decoration:none; margin:0 5px;}
+</style>
+</head>
+<body class="w3-light-grey">
+
+<div class="w3-bar w3-black navbar">
+  <a href="index.html" class="w3-bar-item w3-button">Home</a>
+  <a href="store.html" class="w3-bar-item w3-button">Store</a>
+  <a href="index.html#contact" class="w3-bar-item w3-button">Contact</a>
+</div>
+
+<header class="hero w3-center">
+  <h1>Product Details</h1>
+</header>
+
+<div id="product-details" class="w3-content w3-padding" style="max-width:800px"></div>
+
+<footer class="footer">
+  <p>&copy; 2025 Jay's Pawnshop</p>
+</footer>
+
+<script src="products.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const id = parseInt(params.get("id"), 10);
+  const product = products.find(p => p.id === id);
+  const container = document.getElementById("product-details");
+
+  if (!product) {
+    container.innerHTML = "<p>Product not found.</p>";
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="w3-card w3-padding w3-margin">
+      <img src="${product.image}" alt="${product.name}" style="max-width:300px;display:block;margin:auto;">
+      <h2>${product.name}</h2>
+      <p class="price" style="color:#e67e22;font-weight:bold;">$${product.price}</p>
+      <p>${product.description}</p>
+      <form method="POST" action="mailto:CoutureOnline15@gmail.com" enctype="text/plain">
+        <input type="hidden" name="Product" value="${product.name}">
+        <p><label>Name:<br><input type="text" name="Name" required></label></p>
+        <p><label>Email:<br><input type="email" name="Email" required></label></p>
+        <button type="submit" class="w3-button w3-black">Order Now</button>
+      </form>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>

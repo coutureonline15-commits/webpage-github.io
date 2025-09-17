@@ -94,14 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <h4>${p.name}</h4>
       <p class="price">$${p.price}</p>
 
-      <!-- Email Order Form -->
-      <form method="POST" action="mailto:CoutureOnline15@gmail.com" enctype="text/plain">
-        <input type="hidden" name="Product" value="${p.name}">
-        <p><label>Name:<br><input type="text" name="Name" required></label></p>
-        <p><label>Email:<br><input type="email" name="Email" required></label></p>
-        <button type="submit" class="w3-button w3-black w3-small">Order Now</button>
-      </form>
-
+      
       <!-- Square Buy Now Button Placeholder -->
       <div style="padding:10px; text-align:center;">
         <a target="_blank" href="${p.buyLink}" style="
@@ -124,3 +117,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
+

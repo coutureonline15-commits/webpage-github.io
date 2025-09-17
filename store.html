@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jay's Pawnshop – Online Store</title>
+<meta name="description" content="Shop online at Jay's Pawnshop. Jewelry, tools, electronics, collectibles, and more.">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -16,13 +17,13 @@
   }
   .hero h1 {font-size:48px;font-weight:bold;text-shadow:2px 2px 6px #000;color:yellow !important;}
   .hero p {font-size:20px;text-shadow:1px 1px 4px #000;}
+  .section-title {margin-top:30px; border-bottom:2px solid #ccc; padding-bottom:10px;}
   .footer {background:#222; color:#ccc; padding:20px; text-align:center;}
   .footer a {color:#fff; text-decoration:none; margin:0 5px;}
   .navbar {position:sticky; top:0; z-index:1000;}
   .price {color:#e67e22; font-weight:bold;}
   .social-icons i {margin:0 8px; font-size:20px;}
 
-  /* Grid layout */
   .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -35,20 +36,11 @@
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     padding: 15px;
     text-align: center;
-    min-height: 380px; /* ensures placeholders are same height */
   }
   .product-card img {
     max-width: 100%;
     height: auto;
     border-radius: 6px;
-  }
-  .placeholder {
-    background: #f0f0f0;
-    color: #888;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:18px;
   }
 </style>
 </head>
@@ -87,21 +79,62 @@
 </footer>
 
 <script>
-// =========================
-// Product List with placeholders
-// =========================
 const products = [
-  {id:1, name:"Oled Nintendo Switch with White Controllers", image:"product1.jpg", price:225, description:"Includes Joy-Cons and charger.", buyLink:"PASTE_SQUARE_LINK_HERE"},
-  {id:2, name:"Dual Sense Edge Playstation Controller", image:"product2.jpg", price:150, description:"Customizable PS5 controller.", buyLink:"PASTE_SQUARE_LINK_HERE"},
-  {id:3, name:"Dewalt Combo Kit", image:"product3.jpg", price:150, description:"Drill + impact driver combo.", buyLink:"PASTE_SQUARE_LINK_HERE"},
-  {id:4, name:"NutriBullet", image:"product4.jpg", price:110, description:"Never opened, 900W.", buyLink:"PASTE_SQUARE_LINK_HERE"},
-  {id:5, name:"Rog Ally X", image:"product5.jpg", price:799.99, description:"Handheld gaming PC.", buyLink:"PASTE_SQUARE_LINK_HERE"},
-  {id:6, name:"Xbox Series S With Controller", image:"product6.jpg", price:275, description:"512GB with controller.", buyLink:"PASTE_SQUARE_LINK_HERE"},
-  {id:7, name:"ASUS TUF Gaming Laptop", image:"product7.JPG", price:629, description:"15.6”, Ryzen 7, RTX GPU.", buyLink:"PASTE_SQUARE_LINK_HERE"},
-  {id:8, name:"1991 Classic Major League Baseball Trivia Boardgame Series 2", image:"product8.JPG", price:50, description:"Vintage trivia board game.", buyLink:"PASTE_SQUARE_LINK_HERE"},
-  {id:9, name:"Nintendo Switch Classic Color Controllers", image:"product9.jpg", price:229.95, description:"Classic Nintendo Switch with included Carry Case", buyLink:"PASTE_SQUARE_LINK_HERE"},
-  {id:10, name:"Apple Airpod Pro Max", image:"product10.jpg", price:229.95, description:"Apple Airpods Pro Max", buyLink:"PASTE_SQUARE_LINK_HERE"}
+  {id:1, name:"Oled Nintendo Switch with White Controllers", image:"product1.jpg", price:225, description:"Includes Joy-Cons and charger.", buyLink:"PLACE_SQUARE_LINK_HERE"},
+  {id:2, name:"Dual Sense Edge Playstation Controller", image:"product2.jpg", price:150, description:"Customizable PS5 controller.", buyLink:"PLACE_SQUARE_LINK_HERE"},
+  {id:3, name:"Dewalt Combo Kit", image:"product3.jpg", price:150, description:"Drill + impact driver combo.", buyLink:"PLACE_SQUARE_LINK_HERE"},
+  {id:4, name:"NutriBullet", image:"product4.jpg", price:110, description:"Never opened, 900W.", buyLink:"PLACE_SQUARE_LINK_HERE"},
+  {id:5, name:"Rog Ally X", image:"product5.jpg", price:799.99, description:"Handheld gaming PC.", buyLink:"PLACE_SQUARE_LINK_HERE"},
+  {id:6, name:"Xbox Series S With Controller", image:"product6.jpg", price:275, description:"512GB with controller.", buyLink:"PLACE_SQUARE_LINK_HERE"},
+  {id:7, name:"ASUS TUF Gaming Laptop", image:"product7.JPG", price:629, description:"15.6”, Ryzen 7, RTX GPU.", buyLink:"PLACE_SQUARE_LINK_HERE"},
+  {id:8, name:"1991 Classic Major League Baseball Trivia Boardgame Series 2", image:"product8.JPG", price:50, description:"Vintage trivia board game.", buyLink:"PLACE_SQUARE_LINK_HERE"},
+  {id:9, name:"Nintendo Switch Classic Color Controllers", image:"product9.jpg", price:229.95, description:"Classic Nintendo Switch with included Carry Case", buyLink:"PLACE_SQUARE_LINK_HERE"},
+  {id:10, name:"Apple Airpod Pro Max", image:"product10.jpg", price:229.95, description:"Apple Airpods Pro Max", buyLink:"PLACE_SQUARE_LINK_HERE"}
 ];
 
-const params = new URLSearchParams(window.location.search);
-const productId = params.get("id");
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("main-content");
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+
+  if (id) {
+    const product = products.find(p => p.id === parseInt(id, 10));
+    if (!product) {
+      container.innerHTML = "<p>Product not found.</p>";
+      return;
+    }
+    container.innerHTML = `
+      <div class="w3-card w3-padding w3-margin w3-white">
+        <img src="${product.image}" alt="${product.name}" style="max-width:300px;display:block;margin:auto;">
+        <h2>${product.name}</h2>
+        <p class="price">$${product.price}</p>
+        <p>${product.description}</p>
+
+        <!-- Buy Now Button placeholder -->
+        <div style="padding:20px;">
+          <a target="_blank" href="${product.buyLink}" style="
+            display:inline-block;
+            font-size:18px;
+            line-height:48px;
+            height:48px;
+            color:#ffffff;
+            min-width:212px;
+            background-color:#006aff;
+            text-align:center;
+            border-radius:6px;
+          ">Buy now</a>
+        </div>
+
+        <p><a href="store.html" class="w3-button w3-grey">Back to Store</a></p>
+      </div>
+    `;
+  } else {
+    const grid = document.createElement("div");
+    grid.className = "products-grid";
+
+    products.forEach(p => {
+      const div = document.createElement("div");
+      div.className = "product-card";
+      div.innerHTML = `
+        <a href="store.html?id=${p.id}">
+          <img src="${p.i

@@ -9,5 +9,6 @@ const products = [
   {id:7, name:"ASUS TUF Gaming Laptop", image:"product7.jpg", price:629, description:"15.6”, Ryzen 7, RTX GPU."},        
   {id:8, name:"1991 Classic Major League Baseball Trivia Boardgame Series 2", image:"product8.jpg", price:50, description:"Vintage trivia board game."}
   {id:9, name:"Nintendo Switch Classic Color Controlers", image:"product9.jpg", price:229.95, description:"Classic Nintendo Switch with included Carry Case"}
+  {id:9, name:"Apple Airpod Pro Max", image:"product10.jpg", price:229.95, description:"Apple Airpods Pro Max"}
   
 ];

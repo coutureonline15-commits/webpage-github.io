@@ -48,6 +48,7 @@
   <p>Browse our inventory and shop with confidence</p>
 </header>
 
+<!-- Product Grid -->
 <div class="w3-content" style="max-width:1200px">
   <div class="w3-row-padding w3-margin-top product-container">
     <!-- Products will be injected here by JavaScript -->
@@ -73,15 +74,16 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const products = [
-  {name:"Oled Nintendo Switch with White Controllers", image:"product1.jpg", price:225, buyLink:"PLACE_SQUARE_LINK_HERE"},
-  {name:"Dual Sense Edge Playstation Controller", image:"product2.jpg", price:150, buyLink:"PLACE_SQUARE_LINK_HERE"},
-  {name:"Dewalt Combo Kit", image:"product3.jpg", price:150, buyLink:"PLACE_SQUARE_LINK_HERE"},
-  {name:"NutriBullet", image:"product4.jpg", price:110, buyLink:"PLACE_SQUARE_LINK_HERE"},
-  {name:"Rog Ally X", image:"product5.jpg", price:799.99, buyLink:"PLACE_SQUARE_LINK_HERE"},
-  {name:"Xbox Series S With Controller", image:"product6.jpg", price:275, buyLink:"PLACE_SQUARE_LINK_HERE"},  
-  {name:"ASUS TUFF Gaming Laptop", image:"product7.jpg", price:629, buyLink:"PLACE_SQUARE_LINK_HERE"},        
-  {name:"1991 Classic Major League Baseball Trivia Boardgame Series 2", image:"product8.jpg", price:50, buyLink:"PLACE_SQUARE_LINK_HERE"}
-];
+    {name:"Oled Nintendo Switch with White Controllers", image:"product1.jpg", price:225, buyLink:"PLACE_SQUARE_LINK_HERE"},
+    {name:"Dual Sense Edge Playstation Controller", image:"product2.jpg", price:150, buyLink:"PLACE_SQUARE_LINK_HERE"},
+    {name:"Dewalt Combo Kit", image:"product3.jpg", price:150, buyLink:"PLACE_SQUARE_LINK_HERE"},
+    {name:"NutriBullet", image:"product4.jpg", price:110, buyLink:"PLACE_SQUARE_LINK_HERE"},
+    {name:"Rog Ally X", image:"product5.jpg", price:799.99, buyLink:"PLACE_SQUARE_LINK_HERE"},
+    {name:"Xbox Series S With Controller", image:"product6.jpg", price:275, buyLink:"PLACE_SQUARE_LINK_HERE"},  
+    {name:"ASUS TUFF Gaming Laptop", image:"product7.jpg", price:629, buyLink:"PLACE_SQUARE_LINK_HERE"},        
+    {name:"1991 Classic Major League Baseball Trivia Boardgame Series 2", image:"product8.jpg", price:50, buyLink:"PLACE_SQUARE_LINK_HERE"}
+  ];
+
   const container = document.querySelector(".product-container");
 
   products.forEach(p => {
@@ -92,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
       <h4>${p.name}</h4>
       <p class="price">$${p.price}</p>
 
-      <!-- Buy Now Form (Email fallback) -->
+      <!-- Email Order Form -->
       <form method="POST" action="mailto:CoutureOnline15@gmail.com" enctype="text/plain">
         <input type="hidden" name="Product" value="${p.name}">
         <p><label>Name:<br><input type="text" name="Name" required></label></p>
@@ -100,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function() {
         <button type="submit" class="w3-button w3-black w3-small">Order Now</button>
       </form>
 
-      <!-- Square Buy Now Button placeholder -->
+      <!-- Square Buy Now Button Placeholder -->
       <div style="padding:10px; text-align:center;">
         <a target="_blank" href="${p.buyLink}" style="
           display:inline-block;
@@ -122,4 +124,3 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
-

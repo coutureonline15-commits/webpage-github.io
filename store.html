@@ -74,14 +74,41 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const products = [
-    {name:"Oled Nintendo Switch with White Controllers", image:"product1.jpg", price:225, buyLink:"https://square.link/u/TWHhxps5?src=embed"},
-    {name:"Dual Sense Edge Playstation Controller", image:"product2.jpg", price:150, buyLink:"PLACE_SQUARE_LINK_HERE"},
-    {name:"Dewalt Combo Kit", image:"product3.jpg", price:150, buyLink:"PLACE_SQUARE_LINK_HERE"},
-    {name:"NutriBullet", image:"product4.jpg", price:110, buyLink:"PLACE_SQUARE_LINK_HERE"},
-    {name:"Rog Ally X", image:"product5.jpg", price:799.99, buyLink:"PLACE_SQUARE_LINK_HERE"},
-    {name:"Xbox Series S With Controller", image:"product6.jpg", price:275, buyLink:"PLACE_SQUARE_LINK_HERE"},  
-    {name:"ASUS TUFF Gaming Laptop", image:"product7.jpg", price:629, buyLink:"PLACE_SQUARE_LINK_HERE"},        
-    {name:"1991 Classic Major League Baseball Trivia Boardgame Series 2", image:"product8.jpg", price:50, buyLink:"PLACE_SQUARE_LINK_HERE"}
+    {name:"Oled Nintendo Switch with White Controllers", image:"product1.jpg", price:225, buyEmbed:"<div style="
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 259px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: -2px 10px 5px rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  font-family: SQ Market, SQ Market, Helvetica, Arial, sans-serif;
+  ">
+  <div style="padding: 20px;">
+    <a target="_blank" href="https://square.link/u/TWHhxps5?src=embed" style="
+    display: inline-block;
+    font-size: 18px;
+    line-height: 48px;
+    height: 48px;
+    color: #ffffff;
+    min-width: 212px;
+    background-color: #006aff;
+    text-align: center;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1) inset;
+    border-radius: 6px;
+  ">Buy now</a>
+  </div>
+</div>"},
+    {name:"Dual Sense Edge Playstation Controller", image:"product2.jpg", price:150, buyEmbed:"<!-- PLACE FULL SQUARE EMBED HERE -->"},
+    {name:"Dewalt Combo Kit", image:"product3.jpg", price:150, buyEmbed:"<!-- PLACE FULL SQUARE EMBED HERE -->"},
+    {name:"NutriBullet", image:"product4.jpg", price:110, buyEmbed:"<!-- PLACE FULL SQUARE EMBED HERE -->"},
+    {name:"Rog Ally X", image:"product5.jpg", price:799.99, buyEmbed:"<!-- PLACE FULL SQUARE EMBED HERE -->"},
+    {name:"Xbox Series S With Controller", image:"product6.jpg", price:275, buyEmbed:"<!-- PLACE FULL SQUARE EMBED HERE -->"},  
+    {name:"ASUS TUFF Gaming Laptop", image:"product7.jpg", price:629, buyEmbed:"<!-- PLACE FULL SQUARE EMBED HERE -->"},        
+    {name:"1991 Classic Major League Baseball Trivia Boardgame Series 2", image:"product8.jpg", price:50, buyEmbed:"<!-- PLACE FULL SQUARE EMBED HERE -->"}
   ];
 
   const container = document.querySelector(".product-container");
@@ -94,21 +121,8 @@ document.addEventListener("DOMContentLoaded", function() {
       <h4>${p.name}</h4>
       <p class="price">$${p.price}</p>
 
-      
-      <!-- Square Buy Now Button Placeholder -->
-      <div style="padding:10px; text-align:center;">
-        <a target="_blank" href="${p.buyLink}" style="
-          display:inline-block;
-          font-size:16px;
-          line-height:40px;
-          height:40px;
-          color:#ffffff;
-          min-width:180px;
-          background-color:#006aff;
-          text-align:center;
-          border-radius:6px;
-        ">Buy Now</a>
-      </div>
+      <!-- Square Buy Now Button Embed -->
+      ${p.buyEmbed}
     `;
     container.appendChild(div);
   });
@@ -117,5 +131,3 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
-
-

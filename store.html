@@ -85,22 +85,26 @@
 </footer>
 
 <script>
+// =========================
+// PRODUCT LIST
+// Add each product's Square checkout link in "buyLink"
+// =========================
 const products = [
-  {id:1, name:"Oled Nintendo Switch with White Controllers", image:"product1.jpg", price:225, description:"Includes Joy-Cons and charger."},
-  {id:2, name:"Dual Sense Edge Playstation Controller", image:"product2.jpg", price:150, description:"Customizable PS5 controller."},
-  {id:3, name:"Dewalt Combo Kit", image:"product3.jpg", price:150, description:"Drill + impact driver combo."},
-  {id:4, name:"NutriBullet", image:"product4.jpg", price:110, description:"Never opened, 900W."},
-  {id:5, name:"Rog Ally X", image:"product5.jpg", price:799.99, description:"Handheld gaming PC."},
-  {id:6, name:"Xbox Series S With Controller", image:"product6.jpg", price:275, description:"512GB with controller."},  
-  {id:7, name:"ASUS TUF Gaming Laptop", image:"product7.JPG", price:629, description:"15.6”, Ryzen 7, RTX GPU."},        
-  {id:8, name:"1991 Classic Major League Baseball Trivia Boardgame Series 2", image:"product8.JPG", price:50, description:"Vintage trivia board game."},
-  {id:9, name:"Nintendo Switch Classic Color Controllers", image:"product9.jpg", price:229.95, description:"Classic Nintendo Switch with included Carry Case"},
-  {id:10, name:"Apple Airpod Pro Max", image:"product10.jpg", price:229.95, description:"Apple Airpods Pro Max"},
-  {id:11, name:"PLACE HOLDER", image:"product11.jpg", price:0, description:"product11"},
-  {id:12, name:"PLACE HOLDER", image:"product12.jpg", price:0, description:"product12"},
-  {id:13, name:"PLACE HOLDER", image:"product13.jpg", price:0, description:"product13"},
-  {id:14, name:"PLACE HOLDER", image:"product14.jpg", price:0, description:"product14"},
-  {id:15, name:"PLACE HOLDER", image:"product15.jpg", price:0, description:"product15"}
+  {id:1, name:"Oled Nintendo Switch with White Controllers", image:"product1.jpg", price:225, description:"Includes Joy-Cons and charger.", buyLink:"https://square.link/u/REPLACE_WITH_PRODUCT_1_LINK"},
+  {id:2, name:"Dual Sense Edge Playstation Controller", image:"product2.jpg", price:150, description:"Customizable PS5 controller.", buyLink:"https://square.link/u/REPLACE_WITH_PRODUCT_2_LINK"},
+  {id:3, name:"Dewalt Combo Kit", image:"product3.jpg", price:150, description:"Drill + impact driver combo.", buyLink:"https://square.link/u/REPLACE_WITH_PRODUCT_3_LINK"},
+  {id:4, name:"NutriBullet", image:"product4.jpg", price:110, description:"Never opened, 900W.", buyLink:"https://square.link/u/REPLACE_WITH_PRODUCT_4_LINK"},
+  {id:5, name:"Rog Ally X", image:"product5.jpg", price:799.99, description:"Handheld gaming PC.", buyLink:"https://square.link/u/REPLACE_WITH_PRODUCT_5_LINK"},
+  {id:6, name:"Xbox Series S With Controller", image:"product6.jpg", price:275, description:"512GB with controller.", buyLink:"https://square.link/u/REPLACE_WITH_PRODUCT_6_LINK"},
+  {id:7, name:"ASUS TUF Gaming Laptop", image:"product7.JPG", price:629, description:"15.6”, Ryzen 7, RTX GPU.", buyLink:"https://square.link/u/REPLACE_WITH_PRODUCT_7_LINK"},
+  {id:8, name:"1991 Classic Major League Baseball Trivia Boardgame Series 2", image:"product8.JPG", price:50, description:"Vintage trivia board game.", buyLink:"https://square.link/u/REPLACE_WITH_PRODUCT_8_LINK"},
+  {id:9, name:"Nintendo Switch Classic Color Controllers", image:"product9.jpg", price:229.95, description:"Classic Nintendo Switch with included Carry Case", buyLink:"https://square.link/u/REPLACE_WITH_PRODUCT_9_LINK"},
+  {id:10, name:"Apple Airpod Pro Max", image:"product10.jpg", price:229.95, description:"Apple Airpods Pro Max", buyLink:"https://square.link/u/REPLACE_WITH_PRODUCT_10_LINK"},
+  {id:11, name:"PLACE HOLDER", image:"product11.jpg", price:0, description:"product11", buyLink:"https://square.link/u/REPLACE_WITH_PRODUCT_11_LINK"},
+  {id:12, name:"PLACE HOLDER", image:"product12.jpg", price:0, description:"product12", buyLink:"https://square.link/u/REPLACE_WITH_PRODUCT_12_LINK"},
+  {id:13, name:"PLACE HOLDER", image:"product13.jpg", price:0, description:"product13", buyLink:"https://square.link/u/REPLACE_WITH_PRODUCT_13_LINK"},
+  {id:14, name:"PLACE HOLDER", image:"product14.jpg", price:0, description:"product14", buyLink:"https://square.link/u/REPLACE_WITH_PRODUCT_14_LINK"},
+  {id:15, name:"PLACE HOLDER", image:"product15.jpg", price:0, description:"product15", buyLink:"https://square.link/u/REPLACE_WITH_PRODUCT_15_LINK"}
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -109,7 +113,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const id = params.get("id");
 
   if (id) {
-    // Single product view
+    // =========================
+    // SINGLE PRODUCT VIEW
+    // =========================
     const product = products.find(p => p.id === parseInt(id, 10));
     if (!product) {
       container.innerHTML = "<p>Product not found.</p>";
@@ -121,17 +127,28 @@ document.addEventListener("DOMContentLoaded", () => {
         <h2>${product.name}</h2>
         <p class="price">$${product.price}</p>
         <p>${product.description}</p>
+
+        <!-- =========================
+        BUY NOW BUTTON
+        Replace "buyLink" value above with your Square checkout link
+        ========================= -->
+        <a href="${product.buyLink}" target="_blank" class="w3-button w3-green w3-margin">Buy Now</a>
+
+        <!-- Optional: keep email order form -->
         <form method="POST" action="mailto:CoutureOnline15@gmail.com" enctype="text/plain">
           <input type="hidden" name="Product" value="${product.name}">
           <p><label>Name:<br><input type="text" name="Name" required></label></p>
           <p><label>Email:<br><input type="email" name="Email" required></label></p>
           <button type="submit" class="w3-button w3-black">Order Now</button>
         </form>
+
         <p><a href="store.html" class="w3-button w3-grey">Back to Store</a></p>
       </div>
     `;
   } else {
-    // Grid view
+    // =========================
+    // GRID VIEW
+    // =========================
     const grid = document.createElement("div");
     grid.className = "products-grid";
 
@@ -155,5 +172,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
-
-

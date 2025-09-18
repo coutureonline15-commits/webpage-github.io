@@ -70,7 +70,9 @@
     <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
   </div>
 </footer>
-
+  
+<----products---->
+  
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 const products = [
@@ -109,7 +111,12 @@ const products = [
 </div>
 `
   },
-  {name: "Dual Sense Edge Playstation Controller", image: "product2.jpg", price: 150, buyEmbed: "<div style="
+  {
+    name: "Dual Sense Edge Playstation Controller",
+    image: "product2.jpg",
+    price: 150,
+    buyEmbed: `
+<div style="
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -121,26 +128,64 @@ const products = [
   box-shadow: -2px 10px 5px rgba(0, 0, 0, 0);
   border-radius: 10px;
   font-family: SQ Market, SQ Market, Helvetica, Arial, sans-serif;
-  ">
+">
   <div style="padding: 20px;">
     <a target="_blank" href="https://square.link/u/XLbdycEy?src=embed" style="
-    display: inline-block;
-    font-size: 18px;
-    line-height: 48px;
-    height: 48px;
-    color: #000000;
-    min-width: 212px;
-    background-color: #ffbf00;
-    text-align: center;
-    box-shadow: 0 0 0 1px rgba(0,0,0,.1) inset;
-    border-radius: 0px;
-  ">Buy now</a>
+      display: inline-block;
+      font-size: 18px;
+      line-height: 48px;
+      height: 48px;
+      color: #000000;
+      min-width: 212px;
+      background-color: #ffbf00;
+      text-align: center;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.1) inset;
+      border-radius: 0px;
+    ">Buy now</a>
   </div>
 </div>
 `
-},
-  
-  {name: "Dewalt Combo Kit", image: "product3.jpg", price: 150, buyEmbed: "<div style="
+  },
+  {
+    name: "Dewalt Combo Kit",
+    image: "product3.jpg",
+    price: 150,
+    buyEmbed: `
+<div style="
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 259px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: -2px 10px 5px rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  font-family: SQ Market, SQ Market, Helvetica, Arial, sans-serif;
+">
+  <div style="padding: 20px;">
+    <a target="_blank" href="https://square.link/u/VcPJQ0wj?src=embed" style="
+      display: inline-block;
+      font-size: 18px;
+      line-height: 48px;
+      height: 48px;
+      color: #000000;
+      min-width: 212px;
+      background-color: #ffbf00;
+      text-align: center;
+      box-shadow: 0 0 0 1px rgba(0,0,0,.1) inset;
+      border-radius: 0px;
+    ">Buy now</a>
+  </div>
+</div>
+`
+  },
+  {
+    name: "NutriBullet",
+    image: "product4.jpg",
+    price: 110,
+    buyEmbed: `<div style="
   overflow: auto;
   display: flex;
   flex-direction: column;
@@ -154,7 +199,7 @@ const products = [
   font-family: SQ Market, SQ Market, Helvetica, Arial, sans-serif;
   ">
   <div style="padding: 20px;">
-    <a target="_blank" href="https://square.link/u/VcPJQ0wj?src=embed" style="
+    <a target="_blank" href="https://square.link/u/F1Uf31eH?src=embed" style="
     display: inline-block;
     font-size: 18px;
     line-height: 48px;
@@ -167,15 +212,32 @@ const products = [
     border-radius: 0px;
   ">Buy now</a>
   </div>
-</div>
-`
-},
-                          
-  {name: "NutriBullet", image: "product4.jpg", price: 110, buyEmbed: "<!-- PLACE FULL SQUARE EMBED HERE -->"},
-  {name: "Rog Ally X", image: "product5.jpg", price: 799.99, buyEmbed: "<!-- PLACE FULL SQUARE EMBED HERE -->"},
-  {name: "Xbox Series S With Controller", image: "product6.jpg", price: 275, buyEmbed: "<!-- PLACE FULL SQUARE EMBED HERE -->"},  
-  {name: "ASUS TUFF Gaming Laptop", image: "product7.jpg", price: 629, buyEmbed: "<!-- PLACE FULL SQUARE EMBED HERE -->"},        
-  {name: "1991 Classic Major League Baseball Trivia Boardgame Series 2", image: "product8.jpg", price: 50, buyEmbed: "<!-- PLACE FULL SQUARE EMBED HERE -->"}
+</div>`
+  },
+  {
+    name: "Rog Ally X",
+    image: "product5.jpg",
+    price: 799.99,
+    buyEmbed: `<!-- PLACE FULL SQUARE EMBED HERE -->`
+  },
+  {
+    name: "Xbox Series S With Controller",
+    image: "product6.jpg",
+    price: 275,
+    buyEmbed: `<!-- PLACE FULL SQUARE EMBED HERE -->`
+  },
+  {
+    name: "ASUS TUFF Gaming Laptop",
+    image: "product7.jpg",
+    price: 629,
+    buyEmbed: `<!-- PLACE FULL SQUARE EMBED HERE -->`
+  },
+  {
+    name: "1991 Classic Major League Baseball Trivia Boardgame Series 2",
+    image: "product8.jpg",
+    price: 50,
+    buyEmbed: `<!-- PLACE FULL SQUARE EMBED HERE -->`
+  }
 ];
 
 
@@ -199,6 +261,7 @@ const products = [
 
 </body>
 </html>
+
 
 
 
